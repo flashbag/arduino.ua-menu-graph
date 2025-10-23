@@ -1,0 +1,38 @@
+{
+  "name": "Example Menu",
+  "url": "https://example.com",
+  "children": [
+    {
+      "name": "Category A",
+      "url": "https://example.com/category-a",
+      "children": [
+        {
+          "name": "Subcategory A1",
+          "url": "https://example.com/category-a/sub-a1",
+          "children": []
+        },
+        {
+          "name": "Subcategory A2",
+          "url": "https://example.com/category-a/sub-a2",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Category B",
+      "url": "https://example.com/category-b",
+      "children": [
+        {
+          "name": "Subcategory B1",
+          "url": "https://example.com/category-b/sub-b1",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Category C",
+      "url": "https://example.com/category-c",
+      "children": []
+    }
+  ]
+}

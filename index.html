@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino.ua Menu Graph Visualization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .graph-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        #graph {
+            width: 100%;
+            height: 600px;
+            position: relative;
+        }
+
+        .node circle {
+            fill: #667eea;
+            stroke: #764ba2;
+            stroke-width: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .node circle:hover {
+            fill: #764ba2;
+            stroke: #667eea;
+            stroke-width: 3px;
+        }
+
+        .node text {
+            font-size: 12px;
+            font-family: sans-serif;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .link {
+            fill: none;
+            stroke: #999;
+            stroke-width: 2px;
+            stroke-opacity: 0.6;
+        }
+
+        .info-panel {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .info-panel.active {
+            display: block;
+        }
+
+        .info-panel h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-panel a {
+            color: #764ba2;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .info-panel a:hover {
+            text-decoration: underline;
+        }
+
+        .controls {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .controls button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .controls button:hover {
+            background: #764ba2;
+        }
+
+        .controls label {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .error {
+            background: #fee;
+            border: 1px solid #fcc;
+            border-radius: 5px;
+            padding: 15px;
+            color: #c33;
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+
+        footer a:hover {
+            border-bottom-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Arduino.ua Menu Graph</h1>
+            <p class="subtitle">Interactive visualization of website menu structure</p>
+        </header>
+
+        <div class="controls">
+            <button id="resetBtn">🔄 Reset View</button>
+            <button id="expandBtn">➕ Expand All</button>
+            <button id="collapseBtn">➖ Collapse All</button>
+            <label>
+                <input type="checkbox" id="showLabelsToggle" checked>
+                Show Labels
+            </label>
+        </div>
+
+        <div class="graph-container">
+            <div id="loading" class="loading">Loading data...</div>
+            <div id="error" class="error" style="display: none;"></div>
+            <div id="graph"></div>
+        </div>
+
+        <div id="infoPanel" class="info-panel">
+            <h3 id="infoTitle"></h3>
+            <p><strong>URL:</strong> <a id="infoUrl" href="#" target="_blank"></a></p>
+            <p><strong>Children:</strong> <span id="infoChildren"></span></p>
+        </div>
+
+        <footer>
+            <p>Built with <a href="https://d3js.org/" target="_blank">D3.js</a></p>
+            <p>Data scraped from <a href="https://arduino.ua" target="_blank">Arduino.ua</a></p>
+        </footer>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="graph.js"></script>
+</body>
+</html>

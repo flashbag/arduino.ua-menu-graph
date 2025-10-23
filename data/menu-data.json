@@ -1,0 +1,68 @@
+{
+  "name": "Arduino.ua (Sample Data)",
+  "url": "https://arduino.ua",
+  "children": [
+    {
+      "name": "Products",
+      "url": "https://arduino.ua/products",
+      "children": [
+        {
+          "name": "Arduino Boards",
+          "url": "https://arduino.ua/products/boards",
+          "children": []
+        },
+        {
+          "name": "Sensors",
+          "url": "https://arduino.ua/products/sensors",
+          "children": []
+        },
+        {
+          "name": "Motors",
+          "url": "https://arduino.ua/products/motors",
+          "children": []
+        },
+        {
+          "name": "Displays",
+          "url": "https://arduino.ua/products/displays",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Kits",
+      "url": "https://arduino.ua/kits",
+      "children": [
+        {
+          "name": "Starter Kits",
+          "url": "https://arduino.ua/kits/starter",
+          "children": []
+        },
+        {
+          "name": "Advanced Kits",
+          "url": "https://arduino.ua/kits/advanced",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Tutorials",
+      "url": "https://arduino.ua/tutorials",
+      "children": []
+    },
+    {
+      "name": "Documentation",
+      "url": "https://arduino.ua/docs",
+      "children": []
+    },
+    {
+      "name": "Community",
+      "url": "https://arduino.ua/community",
+      "children": []
+    },
+    {
+      "name": "About",
+      "url": "https://arduino.ua/about",
+      "children": []
+    }
+  ]
+}
